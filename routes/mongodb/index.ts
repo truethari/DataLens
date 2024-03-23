@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
 
-import { hello } from "../../controllers/general";
+import { read } from "../../controllers/mongodb";
 
-router.get("/", hello);
+router.get("/read", read);
 
 export default router;

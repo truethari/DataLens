@@ -7,7 +7,7 @@ import swaggerUI from "swagger-ui-express";
 
 import swaggerDocument from "./lib/swagger";
 
-import generalRoutes from "./routes/general";
+import mongodbRoutes from "./routes/mongodb";
 
 dotenv.config();
 
@@ -18,8 +18,12 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 
-app.use("/", generalRoutes);
+app.use("/mongodb", mongodbRoutes);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+app.get("/", (req, res) => {
+  res.redirect("https://www.google.com");
+});
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
