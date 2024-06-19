@@ -12,7 +12,11 @@ import mongodbRoutes from "./routes/mongodb";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
+if (!port) {
+  console.error("[server]: No port specified");
+  process.exit(1);
+}
 
 app.use(cors());
 app.use(helmet());
